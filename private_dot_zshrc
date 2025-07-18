@@ -125,9 +125,13 @@ for key ('k') bindkey -M vicmd ${key} history-substring-search-up
 for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 
+if [[ "$(uname)" == "Darwin" ]]; then
 export PATH="$(brew --prefix python)/libexec/bin:$PATH"
+fi
+if [ -f "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+fi
 source /usr/local/bin/z.sh
-source "$HOME/.cargo/env"
 
 alias c='clear'
 alias j='z'
